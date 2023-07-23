@@ -2,6 +2,11 @@ import { Container } from "inversify";
 import {
   AutenticateUserUseCase,
   CreateUserUseCase,
+  DeleteUserUseCase,
+  GetUserUseCase,
+  ListUsersUseCase,
+  UpdateUserPasswordUseCase,
+  UpdateUserUseCase,
 } from "@m27/the-food/src/user/application";
 import HashProvider from "../../../../@core/src/@seedwork/application/providers/hash-provider";
 import {
@@ -28,6 +33,11 @@ export const USER_REGITRY = {
   UserRepository: Symbol.for("UserRepository"),
   AutenticateUserUseCase: Symbol.for("AutenticateUserUseCase"),
   CreateUserUseCase: Symbol.for("CreateUserUseCase"),
+  DeleteUserUseCase: Symbol.for("DeleteUserUseCase"),
+  GetUserUseCase: Symbol.for("GetUserUseCase"),
+  ListUsersUseCase: Symbol.for("ListUsersUseCase"),
+  UpdateUserPasswordUseCase: Symbol.for("UpdateUserPasswordUseCase"),
+  UpdateUserUseCase: Symbol.for("UpdateUserUseCase"),
 };
 
 const hashProvider: HashProvider = new BcryptjsHashProvider();
@@ -53,6 +63,18 @@ USER_CONTAINER.bind(USER_REGITRY.UserRepository).toDynamicValue((context) => {
   );
 });
 
+//Authenticate User Use Case
+USER_CONTAINER.bind(USER_REGITRY.AutenticateUserUseCase).toDynamicValue(
+  (context) => {
+    return new AutenticateUserUseCase.UseCase(
+      context.container.get(USER_REGITRY.UserRepository),
+      context.container.get(USER_REGITRY.HASH_PROVIDER),
+      context.container.get(USER_REGITRY.TOKEN_PROVIDER),
+      context.container.get(USER_REGITRY.VALIDATE_PROVIDER)
+    );
+  }
+);
+//Create User Use Case
 USER_CONTAINER.bind(USER_REGITRY.CreateUserUseCase).toDynamicValue(
   (context) => {
     return new CreateUserUseCase.UseCase(
@@ -62,14 +84,44 @@ USER_CONTAINER.bind(USER_REGITRY.CreateUserUseCase).toDynamicValue(
     );
   }
 );
-
-USER_CONTAINER.bind(USER_REGITRY.AutenticateUserUseCase).toDynamicValue(
+//Delete User Use Case
+USER_CONTAINER.bind<DeleteUserUseCase.UseCase>(USER_REGITRY.DeleteUserUseCase).toDynamicValue(
   (context) => {
-    return new AutenticateUserUseCase.UseCase(
+    return new DeleteUserUseCase.UseCase(
+      context.container.get(USER_REGITRY.UserRepository)
+    );
+  }
+);
+//Get User Use Case
+USER_CONTAINER.bind(USER_REGITRY.GetUserUseCase).toDynamicValue((context) => {
+  return new GetUserUseCase.UseCase(
+    context.container.get(USER_REGITRY.UserRepository)
+  );
+});
+
+//List Users Use Case
+USER_CONTAINER.bind(USER_REGITRY.ListUsersUseCase).toDynamicValue((context) => {
+  return new ListUsersUseCase.UseCase(
+    context.container.get(USER_REGITRY.UserRepository)
+  );
+});
+
+//Update User Password Use Case
+USER_CONTAINER.bind(USER_REGITRY.UpdateUserPasswordUseCase).toDynamicValue(
+  (context) => {
+    return new UpdateUserPasswordUseCase.UseCase(
       context.container.get(USER_REGITRY.UserRepository),
       context.container.get(USER_REGITRY.HASH_PROVIDER),
-      context.container.get(USER_REGITRY.TOKEN_PROVIDER),
       context.container.get(USER_REGITRY.VALIDATE_PROVIDER)
+    );
+  }
+);
+
+//Update Users Use Case
+USER_CONTAINER.bind(USER_REGITRY.UpdateUserUseCase).toDynamicValue(
+  (context) => {
+    return new UpdateUserUseCase.UseCase(
+      context.container.get(USER_REGITRY.UserRepository)
     );
   }
 );
