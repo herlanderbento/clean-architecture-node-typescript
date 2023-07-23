@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "skipDefaultLibCheck": true,
+    "incremental": true,
+    "target": "ES2020",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "sourceMap": false,
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

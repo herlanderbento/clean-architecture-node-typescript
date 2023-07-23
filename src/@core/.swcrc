@@ -1,0 +1,30 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true
+    },
+    "baseUrl": "./src",
+    "keepClassNames": true,
+    "paths": {
+      "#seedwork/*": [
+        "./@seedwork/*"
+      ],
+      "#user/*": [
+        "./user/*"
+      ],
+      "#user-favorite/*": [
+        "./user-favorite/*"
+      ],
+      "#category/*": [
+        "./category/*"
+      ],
+      "#ingredient/*": [
+        "./ingredient/*"
+      ],
+      "#comments/*": [
+        "./comments/*"
+      ]
+    }
+  }
+}
