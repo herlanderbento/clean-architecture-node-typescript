@@ -54,7 +54,7 @@ describe("GetUserController unit test", () => {
       name: "user",
       email: "user@example.com",
       created_at: data.created_at,
-      updated_at: data.created_at,
+      updated_at: data.updated_at,
     });
   });
 });
