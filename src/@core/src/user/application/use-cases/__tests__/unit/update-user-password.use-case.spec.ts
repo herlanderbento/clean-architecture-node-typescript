@@ -4,6 +4,7 @@ import { UserInMemoryRepository } from "../../../../infra/db/in-memory/user-in-m
 import UpdateUserPasswordUseCase from "../../update-user-password.use-case";
 import { User } from "../../../../domain/entities/user";
 import { InvalidPasswordError } from "#seedwork/application";
+import { UserPropsDto } from "../../../../application/dto";
 
 describe("UpdateUserPasswordUseCase unit tests", () => {
   let repository: UserInMemoryRepository;
@@ -114,7 +115,7 @@ describe("UpdateUserPasswordUseCase unit tests", () => {
       id: entity.id,
       oldPassword: "password",
       password: "password123",
-    });
+    })
     const checkNewPassword = await hashProvider.compareHash(
       "password123",
       result.password
