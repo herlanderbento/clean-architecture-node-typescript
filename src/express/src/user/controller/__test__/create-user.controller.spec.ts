@@ -1,20 +1,30 @@
-// @ts-ignore
-
 import { Request, Response } from "express";
 import { CreateUserController } from "../create-user.controller";
-import { CreateUserUseCase } from "@m27/the-food/src/user/application";
 import { sequelizeSetupDB } from "../../../@seedwork/db/sequelize/sequelize-setup-db";
 
 describe("CreateUserController unit tests", () => {
+  let response: Response;
   let controller: CreateUserController.Controller;
 
   beforeEach(async () => {
     controller = new CreateUserController.Controller();
-
+    response = {
+      status: function (statusCode: number) {
+        //@ts-expect-error
+        this.statusCode = statusCode;
+        return this;
+      },
+      send: function (data: any) {
+        //@ts-expect-error
+        this.data = data;
+        return this;
+      },
+    } as unknown as Response;
+    
     await sequelizeSetupDB();
   });
 
-  it("should creates a category", async () => {
+  it("should create a user", async () => {
     const request = {
       body: {
         name: "user",
@@ -22,19 +32,6 @@ describe("CreateUserController unit tests", () => {
         password: "test123",
       },
     } as Request;
-
-    const response = {
-      status: function (statusCode: number) {
-        //@ts-expect-error
-        this.statusCode = statusCode;
-        return this;
-      },
-      send: function (data: CreateUserUseCase.Output) {
-        //@ts-expect-error
-        this.data = data;
-        return this;
-      },
-    } as unknown as Response;
 
     //@ts-expect-error
     const { data } = await controller.handle(request, response);
