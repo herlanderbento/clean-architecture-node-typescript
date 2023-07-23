@@ -21,13 +21,15 @@ export namespace ListUsersUseCase {
     private toOutput(searchResult: UserRepository.SearchResult): Output {
       const { items: _items } = searchResult;
       const items = _items.map((item) => {
-        return UserOutputMapper.toOutput(item);
+        return UserOutputMapper.toOutputShortProps(item);
       });
       return PaginationOutputMapper.toOutput(items, searchResult);
     }
   }
   export type Input = SearchInputDto;
 
-  export type Output = PaginationOutputDto<Omit<UserPropsDto, "password">>;
+  export type Output = PaginationOutputDto<
+    Required<Omit<UserPropsDto, "password">>
+  >;
 }
 export default ListUsersUseCase;

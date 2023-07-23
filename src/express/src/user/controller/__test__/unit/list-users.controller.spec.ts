@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import { GetUserController } from "../../get-user.controller";
+import { ListUsersController } from "../../list-users.controller";
 import { CreateUserController } from "../../create-user.controller";
 import { sequelizeSetupDB } from "../../../../@seedwork/db/sequelize/sequelize-setup-db";
 
-describe("GetUserController unit test", () => {
+describe("ListUsersController unit test", () => {
   let response: Response;
   let createUserController: CreateUserController.Controller;
-  let getUserController = new GetUserController.Controller();
+  let listUsersController = new ListUsersController.Controller();
 
   beforeEach(async () => {
     createUserController = new CreateUserController.Controller();
-    getUserController = new GetUserController.Controller();
+    listUsersController = new ListUsersController.Controller();
 
     response = {
       status: function (statusCode: number) {
@@ -28,7 +28,7 @@ describe("GetUserController unit test", () => {
     await sequelizeSetupDB();
   });
 
-  it("should get a user and return 200 status", async () => {
+  it("should list users and return 200 status", async () => {
     let request = {
       body: {
         name: "user",
@@ -41,20 +41,26 @@ describe("GetUserController unit test", () => {
     const { data } = await createUserController.handle(request, response);
 
     request = {
-      params: {
-        id: data.id,
-      },
+      query: {},
     } as unknown as Request;
 
-    await getUserController.handle(request, response);
+    await listUsersController.handle(request, response);
     expect(response.statusCode).toBe(200);
     //@ts-expect-error
     expect(response.data).toEqual({
-      id: data.id,
-      name: "user",
-      email: "user@example.com",
-      created_at: data.created_at,
-      updated_at: data.created_at,
+      current_page: 1,
+      items: [
+        {
+          id: data.id,
+          name: "user",
+          email: "user@example.com",
+          created_at: data.created_at,
+          updated_at: data.updated_at,
+        },
+      ],
+      last_page: 1,
+      per_page: 15,
+      total: 1,
     });
   });
 });

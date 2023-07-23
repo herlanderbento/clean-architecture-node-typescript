@@ -47,7 +47,7 @@ describe("ListUsersUseCase Unit Tests", () => {
 
     output = useCase["toOutput"](result);
     expect(output).toStrictEqual({
-      items: [entity.toJSON()],
+      items: [entity.toShortJSON()],
       total: 1,
       current_page: 1,
       per_page: 2,
@@ -74,7 +74,7 @@ describe("ListUsersUseCase Unit Tests", () => {
     const output = await useCase.execute({});
     // console.log(output);
     expect(output).toStrictEqual({
-      items: [...items].reverse().map((item) => item.toJSON()),
+      items: [...items].reverse().map((item) => item.toShortJSON()),
       total: 2,
       current_page: 1,
       per_page: 15,
@@ -122,7 +122,7 @@ describe("ListUsersUseCase Unit Tests", () => {
       filter: "her",
     });
     expect(output).toStrictEqual({
-      items: [items[1].toJSON(), items[2].toJSON()],
+      items: [items[1].toShortJSON(), items[2].toShortJSON()],
       total: 3,
       current_page: 1,
       per_page: 2,
@@ -153,7 +153,7 @@ describe("ListUsersUseCase Unit Tests", () => {
       filter: "her",
     });
     expect(output).toStrictEqual({
-      items: [items[0].toJSON(), items[2].toJSON()],
+      items: [items[0].toShortJSON(), items[2].toShortJSON()],
       total: 3,
       current_page: 1,
       per_page: 2,
@@ -167,7 +167,7 @@ describe("ListUsersUseCase Unit Tests", () => {
       filter: "eu",
     });
     expect(output).toStrictEqual({
-      items: [items[3].toJSON()],
+      items: [items[3].toShortJSON()],
       total: 1,
       current_page: 1,
       per_page: 2,

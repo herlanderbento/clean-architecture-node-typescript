@@ -167,7 +167,6 @@ export namespace UserSequelize {
   export class UserModelMapper {
     public static toEntity(model: UserModel) {
       const { id, ...otherData } = model.toJSON();
-
       try {
         return new User(otherData, new UniqueEntityId(id));
       } catch (err) {
