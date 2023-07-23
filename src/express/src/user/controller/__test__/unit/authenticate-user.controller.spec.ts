@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { AuthenticateUserController } from "../authenticate-user.controller";
-import { sequelizeSetupDB } from "../../../@seedwork/db/sequelize/sequelize-setup-db";
-import CreateUserController from "../create-user.controller";
+import { AuthenticateUserController } from "../../authenticate-user.controller";
+import { sequelizeSetupDB } from "../../../../@seedwork/db/sequelize/sequelize-setup-db";
+import CreateUserController from "../../create-user.controller";
 
 describe("AuthenticateUserController unit tests", () => {
   let response: Response;
@@ -28,7 +28,7 @@ describe("AuthenticateUserController unit tests", () => {
     await sequelizeSetupDB();
   });
 
-  it("should authenticate a user", async () => {
+  it("should authenticate a user and return 201 status", async () => {
     let request = {
       body: {
         name: "user",

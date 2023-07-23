@@ -1,17 +1,13 @@
 import { Request, Response } from "express";
-import { DeleteUserController } from "../delete-user.controller";
-import { CreateUserController } from "../create-user.controller";
-import { sequelizeSetupDB } from "../../../@seedwork/db/sequelize/sequelize-setup-db";
+import { CreateUserController } from "../../create-user.controller";
+import { sequelizeSetupDB } from "../../../../@seedwork/db/sequelize/sequelize-setup-db";
 
-describe("DeleteUserController unit test", () => {
+describe("CreateUserController unit tests", () => {
   let response: Response;
   let createUserController: CreateUserController.Controller;
-  let deleteUserController = new DeleteUserController.Controller;
 
   beforeEach(async () => {
     createUserController = new CreateUserController.Controller();
-    deleteUserController = new DeleteUserController.Controller();
-
     response = {
       status: function (statusCode: number) {
         //@ts-expect-error
@@ -24,12 +20,12 @@ describe("DeleteUserController unit test", () => {
         return this;
       },
     } as unknown as Response;
-
+    
     await sequelizeSetupDB();
   });
 
-  it("should delete a user and return 200 status", async () => {
-    let request = {
+  it("should create a user and return 201 status", async () => {
+    const request = {
       body: {
         name: "user",
         email: "user@example.com",
@@ -39,14 +35,14 @@ describe("DeleteUserController unit test", () => {
 
     //@ts-expect-error
     const { data } = await createUserController.handle(request, response);
-
-    request = {
-      params: {
-        id: data.id,
-      },
-    } as unknown as Request;
-
-    await deleteUserController.handle(request, response);
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(201);
+    //@ts-expect-error
+    expect(response.data).toEqual({
+      id: data.id,
+      name: "user",
+      email: "user@example.com",
+      created_at: data.created_at,
+      updated_at: data.created_at,
+    });
   });
 });
