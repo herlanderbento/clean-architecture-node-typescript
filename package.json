@@ -18,8 +18,5 @@
     "test:cov": "jest --coverage"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@nestjs/sequelize": "^10.0.0"
-  }
+  "license": "ISC"
 }
