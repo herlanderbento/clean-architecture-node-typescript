@@ -5,8 +5,8 @@
 
 export default {
   displayName: {
-    name: "express",
-    color: "pinky",
+    name: "fastify",
+    color: "yellow",
   },
   transform: {
     '^.+.(t|j)sx?$': [

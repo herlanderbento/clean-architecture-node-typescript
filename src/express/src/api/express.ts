@@ -5,7 +5,6 @@ import { sequelizeSetupDB } from "../@seedwork/db/sequelize/sequelize-setup-db";
 import router from "./routes/router";
 import {
   CustomError,
-  ValidatorFieldsInterface,
   InvalidUuidError,
   LoadEntityError,
   NotFoundError,

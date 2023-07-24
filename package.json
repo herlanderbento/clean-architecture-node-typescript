@@ -6,6 +6,7 @@
   "workspaces": [
     "./src/@core",
     "./src/express",
+    "./src/fastify",
     "./src/nestjs"
   ],
   "scripts": {

@@ -46,7 +46,6 @@ describe("AutenticateUserUseCase unit test", () => {
       email: "herlander@gmail.com",
       password: "password",
     });
-    console.log(result);
 
     expect(spyFindByEmail).toHaveBeenCalledTimes(1);
     expect(result).toStrictEqual({

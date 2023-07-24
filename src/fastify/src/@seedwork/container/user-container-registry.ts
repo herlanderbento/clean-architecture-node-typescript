@@ -16,8 +16,8 @@ import {
 } from "@m27/the-food/src/user/infra";
 import {
   ValidateProvider,
-  HashProvider,
   TokenProvider,
+  HashProvider,
 } from "@m27/the-food/src/@seedwork/application";
 
 export const USER_REGITRY = {

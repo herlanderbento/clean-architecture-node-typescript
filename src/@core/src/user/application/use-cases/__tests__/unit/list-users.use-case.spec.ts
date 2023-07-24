@@ -137,7 +137,7 @@ describe("ListUsersUseCase Unit Tests", () => {
       filter: "her",
     });
     expect(output).toStrictEqual({
-      items: [items[0].toJSON()],
+      items: [items[0].toShortJSON()],
       total: 3,
       current_page: 2,
       per_page: 2,
