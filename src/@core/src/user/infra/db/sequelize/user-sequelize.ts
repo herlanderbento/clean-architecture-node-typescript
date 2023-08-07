@@ -76,6 +76,10 @@ export namespace UserSequelize {
     };
 
     constructor(private userModel: typeof UserModel) {}
+    
+    bulkCreate(entities: User[]): Promise<void> {
+      throw new Error("Method not implemented.");
+    }
 
     public async create(
       entity: Required<{ password: string } & User>

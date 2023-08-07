@@ -7,6 +7,7 @@ export interface RepositoryInterface<
   EntityId extends ValueObject
 > {
   create(entity: E): Promise<void>;
+  bulkCreate(entities: E[]): Promise<void>;
   findById(id: string | EntityId): Promise<E>;
   findAll(): Promise<E[]>;
   update(entity: E): Promise<void>;

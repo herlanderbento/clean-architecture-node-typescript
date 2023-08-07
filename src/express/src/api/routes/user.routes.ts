@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import CreateUserController from "../../user/controller/create-user.controller";
 import DeleteUserController from "../../user/controller/delete-user.controller";
 import GetUserController from "../../user/controller/get-user.controller";

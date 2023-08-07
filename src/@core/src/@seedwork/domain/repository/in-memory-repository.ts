@@ -20,6 +20,10 @@ export abstract class InMemoryRepository<
     this.items.push(entity);
   }
 
+  public async bulkCreate(entities: E[]): Promise<void> {
+    this.items.push(...entities);
+  }
+
   public async findById(id: string | EntityId): Promise<E> {
     const _id = `${id}`;
     return this._get(_id);

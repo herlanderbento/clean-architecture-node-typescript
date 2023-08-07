@@ -12,7 +12,7 @@
     "strict": true,
     "strictNullChecks": false,
     "skipLibCheck": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "sourceMap": false,
   },
   "include": [

@@ -7,7 +7,8 @@
     "#seedwork/domain": "./dist/@seedwork/domain/index.js",
     "#seedwork/*": "./dist/@seedwork/*.js",
     "#user/domain": "./dist/user/domain/index.js",
-    "#user/*": "./dist/@user/*.js"
+    "#user/*": "./dist/@user/*.js",
+    "#job/*": "./dist/@job/*.js"
   },
   "exports": {
     "./src/@seedwork/application": "./dist/@seedwork/application/index.js",
@@ -15,7 +16,10 @@
     "./src/@seedwork/infra": "./dist/@seedwork/infra/index.js",
     "./src/user/application": "./dist/user/application/index.js",
     "./src/user/domain": "./dist/user/domain/index.js",
-    "./src/user/infra": "./dist/user/infra/index.js"
+    "./src/user/infra": "./dist/user/infra/index.js",
+    "./src/job/application": "./dist/job/application/index.js",
+    "./src/job/domain": "./dist/job/domain/index.js",
+    "./src/job/infra": "./dist/job/infra/index.js"
   },
   "typesVersions": {
     ">=4.0": {
@@ -36,6 +40,15 @@
       ],
       "user/infra": [
         "./dist/user/infra/index.d.ts"
+      ],
+      "job/application": [
+        "./dist/job/application/index.d.ts"
+      ],
+      "job/domain": [
+        "./dist/job/domain/index.d.ts"
+      ],
+      "job/infra": [
+        "./dist/job/infra/index.d.ts"
       ]
     }
   },

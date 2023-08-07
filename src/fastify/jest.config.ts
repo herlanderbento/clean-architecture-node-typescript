@@ -9,11 +9,11 @@ export default {
     color: "yellow",
   },
   transform: {
-    '^.+.(t|j)sx?$': [
-      '@swc/jest',
+    "^.+.(t|j)sx?$": [
+      "@swc/jest",
       {
         jsc: {
-          target: 'es2021',
+          target: "es2021",
         },
       },
     ],
@@ -45,7 +45,7 @@ export default {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
+  coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -149,7 +149,7 @@ export default {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
 
@@ -206,73 +206,3 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
-
-// const m27_the_food_path = '<rootDir>/../../../node_modules/@m27/the-food/dist';
-
-// const config = {
-//   displayName: {
-//     name: 'nestjs',
-//     color: 'magentaBright',
-//   },
-//   moduleFileExtensions: ['js', 'json', 'ts'],
-//   rootDir: 'src',
-//   testRegex: '.*\\..*spec\\.ts$',
-//   transform: {
-//     '^.+\\.(t|j)s$': '@swc/jest',
-//   },
-//   collectCoverageFrom: ['**/*.(t|j)s'],
-//   coverageProvider: 'v8',
-//   coverageDirectory: '../__coverage',
-//   testEnvironment: 'node',
-//   moduleNameMapper: {
-//     '/@m27\\/the-food\\/(.*)/': `${m27_the_food_path}/$1`,
-//     '#seedwork/domain(.*)$': `${m27_the_food_path}/@seedwork/$1`,
-//     '#user/domain(.*)$': `${m27_the_food_path}/user/$1`,
-//     '#user-favorite/domain(.*)$': `${m27_the_food_path}/user-favorite/$1`,
-//     '#category/domain(.*)$': `${m27_the_food_path}/category/$1`,
-//     '#ingredient/domain(.*)$': `${m27_the_food_path}/ingredient/$1`,
-//     '#comments/domain(.*)$': `${m27_the_food_path}/comments/$1`,
-//   },
-//   setupFilesAfterEnv: ['../../@core/src/@seedwork/domain/tests/jest.ts'],
-//   coverageThreshold: {
-//     // global: {
-//     //   statements: 80,
-//     //   branches: 80,
-//     //   functions: 80,
-//     //   lines: 80,
-//     // },
-//   },
-// };
-
-// export default config;
-
-
-// import jestConfig from '../jest.config';
-
-// export default {
-//   ...jestConfig,
-//   displayName: {
-//     name: 'nestjs-e2e',
-//     color: 'yellow',
-//   },
-//   rootDir: './',
-//   testRegex: '.*\\.e2e-spec\\.ts$',
-//   maxWorkers: 1,
-//   setupFiles: ['<rootDir>/setup-test.ts'],
-//   moduleNameMapper: {
-//     '/@m27\\/the-food\\/(.*)/':
-//       '<rootDir>../../../../node_modules/@m27/the-food/dist/$1',
-//     '#seedwork/(.*)$':
-//       '<rootDir>/../../../../node_modules/@m27/the-food/dist/@seedwork/$1',
-//     '#user/(.*)$':
-//       '<rootDir>/../../../../node_modules/@m27/the-food/dist/user/$1',
-//     '#user-favorite/(.*)$':
-//       '<rootDir>/../../../../node_modules/@m27/the-food/dist/user-favorite/$1',
-//     '#category/(.*)$':
-//       '<rootDir>/../../../../node_modules/@m27/the-food/dist/category/$1',
-//     '#ingredient/(.*)$':
-//       '<rootDir>/../../../../node_modules/@m27/the-food/dist/ingredient/$1',
-//     '#comments/(.*)$':
-//       '<rootDir>/../../../../node_modules/@m27/the-food/dist/comments/$1',
-//   },
-// };
